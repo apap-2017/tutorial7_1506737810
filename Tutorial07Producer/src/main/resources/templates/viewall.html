@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+	    	<div th:replace = "fragments/fragment :: header" ></div>
+	        <table id="table_id" class="display">
+			    <thead>
+			        <tr>
+			            <th>No</th>
+			            <th>NPM</th>
+			            <th>Name</th>
+			            <th>GPA</th>
+			            <th>Cum Laude</th>
+			            <th>Delete</th>
+			            <th>Update</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr th:each="student,iterationStatus: ${students}">
+			            <td th:text="${iterationStatus.index +1}">No</td>
+			            <td th:text="${student.npm}"></td>
+			            <td th:text="${student.name}"></td>
+			            <td th:text="${student.gpa}"></td>
+			            <td th:text="${student.gpa >= 3.49 ? 'Ya':'Tidak'}"></td>
+			            <td><a th:href="'/student/delete/' + ${student.npm}"> Delete Data</a><br/>
+	      				</td>
+	      				<td><a th:href="'/student/update/' + ${student.npm}"> Update Data</a><br/>
+	   					</td>         
+			        </tr>
+			    </tbody>
+			</table>
+    	</div>
+    </body>
+</html>
