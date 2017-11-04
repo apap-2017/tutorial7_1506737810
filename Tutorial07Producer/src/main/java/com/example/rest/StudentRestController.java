@@ -38,4 +38,13 @@ public class StudentRestController
         CourseModel course = studentService.selectCourse(idCourse);
         return course;
     }
+	
+	@RequestMapping("/course/viewall")
+    public List<CourseModel> viewCourse ()
+    {
+        List<CourseModel> course = studentService.selectAllCourses();
+        return course;
+    }
+
+
 }

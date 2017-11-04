@@ -60,4 +60,9 @@ public class StudentServiceDatabase implements StudentService
     	log.info ("student " + student.getNpm() + " updated");
     	studentMapper.updateStudent(student);;
     }
+
+	@Override
+	public List<CourseModel> selectAllCourses() {
+		return studentMapper.selectAllCourses();
+	}
 }
